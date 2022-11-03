@@ -110,7 +110,7 @@ def composeMail():
     sub = speech_to_text()
     SpeakText("Say your message. Speak")
     msg = speech_to_text()
-    SpeakText("You said Subject is " + sub + " and bidy is "+ msg + ". Confirm by saying YES or NO. Speak")
+    SpeakText("You said Subject is " + sub + " and body is "+ msg + ". Confirm by saying YES or NO. Speak")
     confirmMailBody = speech_to_text()
     if confirmMailBody.lower() == "yes":
         SpeakText("Message sent")
@@ -157,27 +157,24 @@ def getLatestMails():
     Get latest mails from folders in mailbox (Defaults to 3 Inbox mails)
     """
     mailBoxTarget = "INBOX"
-    SpeakText("Choose the folder name to get the latest mails. Say 1 for Inbox. Say 2 for Sent Mailbox. Say 3 for Drafts. Say 4 for important mails. Say 5 for Spam. Say 6 for Starred Mails. Say 7 for Bin. Speak")
+    SpeakText("Choose the folder name to get the latest mails. Say 1 for Inbox. Say 2 for Drafts. Say 3 for important mails. Say 4 for Spam. Say 5 for Starred Mails. Say 6 for Bin. Speak")
     cmb = speech_to_text()
     if cmb == "1" or cmb.lower() == "one":
         mailBoxTarget = "INBOX"
         SpeakText("Inbox selected.")
     elif cmb == "2" or cmb.lower() == "two" or cmb.lower() == "tu":
-        mailBoxTarget = '"[Gmail]/Sent Mail"'
-        SpeakText("Sent Mailbox selected.")
-    elif cmb == "3" or cmb.lower() == "three":
         mailBoxTarget = '"[Gmail]/Drafts"'
         SpeakText("Drafts selected.")
-    elif cmb == "4" or cmb.lower() == "four":
+    elif cmb == "3" or cmb.lower() == "three":
         mailBoxTarget = '"[Gmail]/Important"'
         SpeakText("Important Mails selected.")
-    elif cmb == "5" or cmb.lower() == "five":
+    elif cmb == "4" or cmb.lower() == "four":
         mailBoxTarget = '"[Gmail]/Spam"'
         SpeakText("Spam selected.")
-    elif cmb == "6" or cmb.lower() == "six":
+    elif cmb == "5" or cmb.lower() == "five":
         mailBoxTarget = '"[Gmail]/Starred"'
         SpeakText("Starred Mails selected.")
-    elif cmb == "7" or cmb.lower() == "seven":
+    elif cmb == "6" or cmb.lower() == "six":
         mailBoxTarget = '"[Gmail]/Bin"'
         SpeakText("Bin selected.")
     else:
@@ -450,7 +447,7 @@ def main():
         SpeakText("Choose and speak out the option number for the task you want to perform. Say 1 to send a mail. Say 2 to get your mailbox status. Say 3 to search a mail. Say 4 to get the last 3 mails. Speak")
         choice = speech_to_text()
 
-        if choice == '1' or choice.lower() == 'one':
+        if choice == '1' or choice.lower() == 'one' or choice.lower() == 'van':
             composeMail()
         elif choice == '2' or choice.lower() == 'too' or choice.lower() == 'two' or choice.lower() == 'to' or choice.lower() == 'tu':
             getMailBoxStatus()
@@ -460,7 +457,6 @@ def main():
             getLatestMails()
         else:
             SpeakText("Wrong choice. Please say only the number.")
-
     else:
         SpeakText("Both Email ID and Password should be present.")
 
